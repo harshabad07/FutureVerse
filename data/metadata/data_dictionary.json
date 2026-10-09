@@ -1,0 +1,91 @@
+{
+  "dataset_name": "Maharashtra Sugarcane Growth & Yield Dataset",
+  "region": "Maharashtra, India",
+  "records_count": 1332,
+  "attributes": [
+    {
+      "name": "district",
+      "type": "String",
+      "unit": "N/A",
+      "description": "Maharashtra District Name"
+    },
+    {
+      "name": "crop_year",
+      "type": "Integer",
+      "unit": "Year",
+      "description": "Agricultural crop year"
+    },
+    {
+      "name": "soil_ph",
+      "type": "Float",
+      "unit": "pH scale (3.0-10.0)",
+      "description": "Soil acidity / alkalinity level"
+    },
+    {
+      "name": "nitrogen",
+      "type": "Integer",
+      "unit": "kg/ha",
+      "description": "Available Soil Nitrogen (N)"
+    },
+    {
+      "name": "phosphorus",
+      "type": "Integer",
+      "unit": "kg/ha",
+      "description": "Available Soil Phosphorus (P)"
+    },
+    {
+      "name": "potassium",
+      "type": "Integer",
+      "unit": "kg/ha",
+      "description": "Available Soil Potassium (K)"
+    },
+    {
+      "name": "temperature",
+      "type": "Float",
+      "unit": "\u00b0C",
+      "description": "Mean annual ambient temperature"
+    },
+    {
+      "name": "humidity",
+      "type": "Float",
+      "unit": "%",
+      "description": "Mean relative humidity"
+    },
+    {
+      "name": "rainfall",
+      "type": "Float",
+      "unit": "mm/year",
+      "description": "Total annual precipitation"
+    },
+    {
+      "name": "irrigation_adequacy",
+      "type": "String",
+      "unit": "Categorical",
+      "description": "Adequate / Deficient / Excessive"
+    },
+    {
+      "name": "soil_type",
+      "type": "String",
+      "unit": "Categorical",
+      "description": "Clay / Loam / Sandy Loam / Silt Loam"
+    },
+    {
+      "name": "crop_age_months",
+      "type": "Integer",
+      "unit": "Months (1-18)",
+      "description": "Crop age in months"
+    },
+    {
+      "name": "yield_t_ha",
+      "type": "Float",
+      "unit": "tonnes/hectare",
+      "description": "Primary Yield Target Output"
+    },
+    {
+      "name": "growth_percentage",
+      "type": "Float",
+      "unit": "% (0-100)",
+      "description": "Conditional Sugarcane Growth Target"
+    }
+  ]
+}

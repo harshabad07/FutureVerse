@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FutureVerse - A Machine Learning-Based Framework for Sugarcane Growth Prediction and Intelligent Farming Recommendations for Maharashtra, India.">
+    <title>FutureVerse – Sugarcane Growth & Yield ML Framework</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header class="navbar-header" id="header">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-icon">🌱</span>
+                <div class="logo-brand">
+                    <span class="logo-text">Future<span class="logo-highlight">Verse</span></span>
+                    <span class="logo-tagline" data-i18n="tagline_short">Smart Sugarcane ML Platform</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#input-form" class="nav-link" data-i18n="nav_input">Field Data Form</a></li>
+                    <li><a href="#prediction" class="nav-link" data-i18n="nav_prediction">Predictions</a></li>
+                    <li><a href="#farm-health" class="nav-link" data-i18n="nav_health">Farm Health</a></li>
+                    <li><a href="#recommendations" class="nav-link" data-i18n="nav_recommendations">Recommendations</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Language Selector Buttons -->
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="en" title="English">EN</button>
+                    <button class="lang-btn" data-lang="hi" title="Hindi">हिंदी</button>
+                    <button class="lang-btn" data-lang="mr" title="Marathi">मराठी</button>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                    <span class="theme-icon sun-icon">☀️</span>
+                    <span class="theme-icon moon-icon hidden">🌙</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main>
+
+        <!-- 1. HOME & PROJECT OVERVIEW SECTION -->
+        <section class="section hero-section" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge-pill">🌾 Maharashtra Sugarcane Machine Learning Framework</div>
+                    <h1 class="hero-title" data-i18n="hero_title">
+                        Intelligent Sugarcane Growth & Yield Prediction for <span class="gradient-text">Maharashtra Farmers</span>
+                    </h1>
+                    <p class="hero-description" data-i18n="hero_desc">
+                        A data-driven machine learning decision support platform evaluating Decision Tree, Random Forest, Gradient Boosting, and XGBoost regressors to optimize sugarcane yield (t/ha) and field health.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#input-form" class="btn btn-primary" data-i18n="btn_enter_data">Enter Field Data 🚜</a>
+                        <a href="#farm-health" class="btn btn-secondary" data-i18n="btn_view_health">View Farm Health 🌿</a>
+                    </div>
+
+                    <!-- API Connection Status Banner -->
+                    <div class="api-status-banner warning-banner" id="heroApiBanner">
+                        <span class="banner-icon">⚡</span>
+                        <div class="banner-text">
+                            <strong id="bannerStatusTitle" data-i18n="api_status_title">Connecting to Backend API...</strong>
+                            <p id="bannerStatusDesc" data-i18n="api_status_desc">Testing connection to FastAPI server at `http://localhost:8000/api/health`...</p>
+                        </div>
+                        <button class="btn btn-sm btn-outline" id="checkApiBtn" data-i18n="btn_check_api">Test Connection</button>
+                    </div>
+                </div>
+
+                <!-- Feature Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🧪</div>
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label" data-i18n="stat_inputs">Soil & Weather Inputs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-number">4</div>
+                        <div class="stat-label" data-i18n="stat_models">Regression Models</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-number">MAE / RMSE / R²</div>
+                        <div class="stat-label" data-i18n="stat_metrics">Validation Metrics</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💡</div>
+                        <div class="stat-number">ICAR / VSI</div>
+                        <div class="stat-label" data-i18n="stat_agronomic">Agronomic Advice</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FARMER INPUT FORM SECTION -->
+        <section class="section input-section" id="input-form">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="form_subtitle">Field Record Input</span>
+                    <h2 class="section-title" data-i18n="form_title">Enter Today's Farm Readings</h2>
+                    <p class="section-desc" data-i18n="form_desc">Provide your field parameters to calculate parameter health and run sugarcane yield inference once the Python FastAPI backend is active.</p>
+                </div>
+
+                <!-- Quick Scenario Presets -->
+                <div class="scenario-bar">
+                    <span class="scenario-label" data-i18n="quick_scenarios">Quick Scenarios:</span>
+                    <button class="btn-chip" id="btnScenarioHealthy" data-i18n="scenario_healthy">🌱 Healthy Field</button>
+                    <button class="btn-chip" id="btnScenarioStressed" data-i18n="scenario_stressed">💧 Water-Stressed</button>
+                    <button class="btn-chip" id="btnScenarioDeficient" data-i18n="scenario_deficient">🧪 Nutrient-Deficient</button>
+                </div>
+
+                <div class="form-container-card">
+                    <form id="farmerInputForm" class="farmer-form" novalidate>
+
+                        <!-- Region & District Selection -->
+                        <div class="form-section-block">
+                            <h3 class="block-title">📍 Region & Soil Classification</h3>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label for="inputDistrict" data-i18n="label_district">Maharashtra District <span class="req">*</span></label>
+                                    <select id="inputDistrict" class="form-control" required>
+                                        <option value="Solapur">Solapur</option>
+                                        <option value="Pune">Pune</option>
+                                        <option value="Satara">Satara</option>
+                                        <option value="Sangli">Sangli</option>
+                                        <option value="Kolhapur">Kolhapur</option>
+                                        <option value="Ahmednagar">Ahmednagar (Ahilyanagar)</option>
+                                        <option value="Nashik">Nashik</option>
+                                        <option value="Chhatrapati Sambhajinagar">Chhatrapati Sambhajinagar (Aurangabad)</option>
+                                        <option value="Nanded">Nanded</option>
+                                        <option value="Latur">Latur</option>
+                                        <option value="Dharashiv">Dharashiv (Osmanabad)</option>
+                                        <option value="Jalgaon">Jalgaon</option>
+                                    </select>
+                                    <span class="field-hint">Sugarcane growing belt of Maharashtra</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputSoilType" data-i18n="label_soil_type">Soil Type <span class="req">*</span></label>
+                                    <select id="inputSoilType" class="form-control" required>
+                                        <option value="Clay">Clay (Heavy Black Cotton)</option>
+                                        <option value="Loam" selected>Loamy Soil (Ideal)</option>
+                                        <option value="Sandy Loam">Sandy Loam</option>
+                                        <option value="Silt Loam">Silt Loam</option>
+                                    </select>
+                                    <span class="field-hint">Influences water retention & drainage</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Soil Parameters Block -->
+                        <div class="form-section-block">
+                            <h3 class="block-title">🧪 Soil Nutrients & pH</h3>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <div class="label-row">
+                                        <label for="inputPh" data-i18n="label_ph">Soil pH</label>
+                                        <span class="value-display" id="valPh">6.8</span>
+                                    </div>
+                                    <input type="range" id="inputPh" min="3.0" max="10.0" step="0.1" value="6.8" class="slider-control">
+                                    <div class="slider-labels">
+                                        <span>3.0 (Acidic)</span>
+                                        <span>6.5 - 7.5 (Optimal)</span>
+                                        <span>10.0 (Alkaline)</span>
+                                    </div>
+                                    <span class="error-msg" id="errPh"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="label-row">
+                                        <label for="inputN" data-i18n="label_n">Nitrogen (N) <span class="unit-badge">kg/ha</span></label>
+                                        <span class="value-display" id="valN">150</span>
+                                    </div>
+                                    <input type="range" id="inputN" min="0" max="300" step="1" value="150" class="slider-control">
+                                    <div class="slider-labels">
+                                        <span>0 kg/ha</span>
+                                        <span>Target: 120-180 kg/ha</span>
+                                        <span>300 kg/ha</span>
+                                    </div>
+                                    <span class="error-msg" id="errN"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="label-row">
+                                        <label for="inputP" data-i18n="label_p">Phosphorus (P) <span class="unit-badge">kg/ha</span></label>
+                                        <span class="value-display" id="valP">60</span>
+                                    </div>
+                                    <input type="range" id="inputP" min="0" max="150" step="1" value="60" class="slider-control">
+                                    <div class="slider-labels">
+                                        <span>0 kg/ha</span>
+                                        <span>Target: 50-80 kg/ha</span>
+                                        <span>150 kg/ha</span>
+                                    </div>
+                                    <span class="error-msg" id="errP"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="label-row">
+                                        <label for="inputK" data-i18n="label_k">Potassium (K) <span class="unit-badge">kg/ha</span></label>
+                                        <span class="value-display" id="valK">150</span>
+                                    </div>
+                                    <input type="range" id="inputK" min="0" max="300" step="1" value="150" class="slider-control">
+                                    <div class="slider-labels">
+                                        <span>0 kg/ha</span>
+                                        <span>Target: 120-180 kg/ha</span>
+                                        <span>300 kg/ha</span>
+                                    </div>
+                                    <span class="error-msg" id="errK"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Climate & Crop Parameters Block -->
+                        <div class="form-section-block">
+                            <h3 class="block-title">☀️ Weather, Irrigation & Crop Age</h3>
+                            <div class="form-grid-3">
+                                <div class="form-group">
+                                    <div class="label-row">
+                                        <label for="inputTemp" data-i18n="label_temp">Temperature (°C)</label>
+                                        <span class="value-display" id="valTemp">28</span>
+                                    </div>
+                                    <input type="range" id="inputTemp" min="10" max="50" step="1" value="28" class="slider-control">
+                                    <span class="error-msg" id="errTemp"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="label-row">
+                                        <label for="inputHumidity" data-i18n="label_humidity">Humidity (%)</label>
+                                        <span class="value-display" id="valHumidity">65</span>
+                                    </div>
+                                    <input type="range" id="inputHumidity" min="10" max="100" step="1" value="65" class="slider-control">
+                                    <span class="error-msg" id="errHumidity"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="label-row">
+                                        <label for="inputRainfall" data-i18n="label_rainfall">Annual Rainfall (mm)</label>
+                                        <span class="value-display" id="valRainfall">1100</span>
+                                    </div>
+                                    <input type="range" id="inputRainfall" min="200" max="3000" step="25" value="1100" class="slider-control">
+                                    <span class="error-msg" id="errRainfall"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputIrrigation" data-i18n="label_irrigation">Irrigation Adequacy</label>
+                                    <select id="inputIrrigation" class="form-control">
+                                        <option value="Adequate" selected>Adequate (Optimal Schedule)</option>
+                                        <option value="Deficient">Deficient (Water Shortage)</option>
+                                        <option value="Excessive">Excessive (Waterlogging Risk)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group span-2">
+                                    <div class="label-row">
+                                        <label for="inputAge" data-i18n="label_age">Crop Age (Months)</label>
+                                        <span class="value-display" id="valAge">5</span>
+                                    </div>
+                                    <input type="range" id="inputAge" min="1" max="18" step="1" value="5" class="slider-control">
+                                    <div class="slider-labels">
+                                        <span>1 mth (Germination)</span>
+                                        <span>5 mths (Grand Growth)</span>
+                                        <span>12-18 mths (Maturity)</span>
+                                    </div>
+                                    <span class="error-msg" id="errAge"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Submit Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg" id="btnAnalyze">
+                                <span id="btnText">Analyze Growth & Yield</span> 🌱
+                            </button>
+                            <button type="button" class="btn btn-outline btn-lg" id="btnResetForm" data-i18n="btn_reset">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PREDICTION RESULTS DASHBOARD SECTION -->
+        <section class="section prediction-section" id="prediction">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="pred_subtitle">ML Model Outputs</span>
+                    <h2 class="section-title" data-i18n="pred_title">Yield & Growth Inference Dashboard</h2>
+                    <p class="section-desc" data-i18n="pred_desc">Results are calculated live by the selected best-performing ML regression model when connected to the Python FastAPI server.</p>
+                </div>
+
+                <!-- API Connection Notice Banner -->
+                <div class="api-notice-box" id="apiNoticeBox">
+                    <div class="notice-header">
+                        <span class="status-indicator offline" id="apiStatusDot"></span>
+                        <h4 id="apiStatusText" data-i18n="api_offline_title">Backend API Status: Checking...</h4>
+                    </div>
+                    <p class="notice-desc" id="apiNoticeDesc" data-i18n="api_offline_desc">
+                        Live predictions require the Python FastAPI backend service running at <code>http://localhost:8000/api/predict</code>.
+                    </p>
+                </div>
+
+                <!-- Live Results Banner / Timestamp -->
+                <div class="prediction-meta-bar hidden" id="predictionMetaBar">
+                    <span class="meta-tag">⚡ Live API Response</span>
+                    <span class="meta-timestamp" id="predTimestamp">Analyzed at --:--:--</span>
+                </div>
+
+                <!-- Results Grid -->
+                <div class="results-grid">
+                    <!-- Predicted Growth Card -->
+                    <div class="result-card">
+                        <div class="card-badge info-badge" id="confidenceBadge" data-i18n="badge_growth">Growth Target</div>
+                        <h4 class="card-metric-title" data-i18n="title_growth">Predicted Growth Stage</h4>
+                        <div class="metric-value-box">
+                            <span class="metric-num" id="predGrowthVal">--</span>
+                            <span class="metric-unit">%</span>
+                        </div>
+                        <p class="metric-note" id="predGrowthNote" data-i18n="note_growth">Conditional prediction available only when growth-labelled training data is provided.</p>
+                    </div>
+
+                    <!-- Estimated Yield Card -->
+                    <div class="result-card highlight-card">
+                        <div class="card-badge primary-badge" data-i18n="badge_yield">Yield Target</div>
+                        <h4 class="card-metric-title" data-i18n="title_yield">Estimated Yield</h4>
+                        <div class="metric-value-box">
+                            <span class="metric-num" id="predYieldVal">--</span>
+                            <span class="metric-unit">tonnes / ha</span>
+                        </div>
+                        <p class="metric-note" id="predYieldNote" data-i18n="note_yield">Inference calculated live by trained ML model backend.</p>
+                    </div>
+
+                    <!-- Selected Best Model Card -->
+                    <div class="result-card">
+                        <div class="card-badge success-badge" data-i18n="badge_best_model">Selected Model</div>
+                        <h4 class="card-metric-title" data-i18n="title_selected_model">Empirical Best Algorithm</h4>
+                        <div class="metric-value-box text-sm">
+                            <span class="metric-model-name" id="selectedModelName">--</span>
+                        </div>
+                        <p class="metric-note" id="selectedModelNote" data-i18n="note_best_model">Empirically selected based on validation R² score & lowest RMSE.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 5. FARM HEALTH DASHBOARD SECTION -->
+        <section class="section health-section" id="farm-health">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="health_subtitle">Agronomic Analysis</span>
+                    <h2 class="section-title" data-i18n="health_title">Parameter Health Dashboard</h2>
+                    <p class="section-desc" data-i18n="health_desc">Real-time breakdown of current field readings compared to optimal Maharashtra sugarcane thresholds.</p>
+                </div>
+
+                <div class="health-card-container">
+                    <div class="health-meters-grid" id="healthMetersGrid">
+                        <!-- Soil pH Gauge Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Soil pH</span>
+                                <span class="meter-value" id="healthValPh">6.8</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarPh" style="width: 68%;"></div>
+                            </div>
+                            <span class="target-range">Ideal Range: 6.0 – 7.5</span>
+                        </div>
+
+                        <!-- Nitrogen Gauge Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Nitrogen (N)</span>
+                                <span class="meter-value" id="healthValN">150 kg/ha</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarN" style="width: 75%;"></div>
+                            </div>
+                            <span class="target-range">Ideal Range: 120 – 180 kg/ha</span>
+                        </div>
+
+                        <!-- Phosphorus Gauge Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Phosphorus (P)</span>
+                                <span class="meter-value" id="healthValP">60 kg/ha</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarP" style="width: 75%;"></div>
+                            </div>
+                            <span class="target-range">Ideal Range: 50 – 80 kg/ha</span>
+                        </div>
+
+                        <!-- Potassium Gauge Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Potassium (K)</span>
+                                <span class="meter-value" id="healthValK">150 kg/ha</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarK" style="width: 75%;"></div>
+                            </div>
+                            <span class="target-range">Ideal Range: 120 – 180 kg/ha</span>
+                        </div>
+
+                        <!-- Temperature Gauge Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Temperature (°C)</span>
+                                <span class="meter-value" id="healthValTemp">28 °C</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarTemp" style="width: 60%;"></div>
+                            </div>
+                            <span class="target-range">Ideal Range: 20 – 35 °C</span>
+                        </div>
+
+                        <!-- Humidity Gauge Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Humidity (%)</span>
+                                <span class="meter-value" id="healthValHumidity">65 %</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarHumidity" style="width: 65%;"></div>
+                            </div>
+                            <span class="target-range">Ideal Range: 50 – 85 %</span>
+                        </div>
+
+                        <!-- Rainfall Gauge Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Rainfall (mm)</span>
+                                <span class="meter-value" id="healthValRainfall">1100 mm</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarRainfall" style="width: 55%;"></div>
+                            </div>
+                            <span class="target-range">Ideal Range: 1000 – 1500 mm</span>
+                        </div>
+
+                        <!-- Irrigation Adequacy Bar -->
+                        <div class="meter-item">
+                            <div class="meter-info">
+                                <span class="meter-label">Irrigation Adequacy</span>
+                                <span class="meter-value" id="healthValIrrigation">Adequate</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill optimal" id="gaugeBarIrrigation" style="width: 100%;"></div>
+                            </div>
+                            <span class="target-range">Status: Adequate Schedule</span>
+                        </div>
+                    </div>
+
+                    <!-- Outlook Summary Cards -->
+                    <div class="outlook-cards-row">
+                        <div class="outlook-card">
+                            <span class="outlook-icon">🏷️</span>
+                            <h4 data-i18n="label_field_status">Field Status</h4>
+                            <p id="txtFieldStatus">Readings in optimal range</p>
+                        </div>
+                        <div class="outlook-card">
+                            <span class="outlook-icon">🎯</span>
+                            <h4 data-i18n="label_top_priority">Top Priority</h4>
+                            <p id="txtTopPriority">Maintain balanced NPK fertilization</p>
+                        </div>
+                        <div class="outlook-card">
+                            <span class="outlook-icon">➔</span>
+                            <h4 data-i18n="label_next_step">Next Step</h4>
+                            <p id="txtNextStep">Monitor irrigation schedule for current crop age</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FARMING RECOMMENDATIONS SECTION -->
+        <section class="section rec-section" id="recommendations">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="rec_subtitle">Agronomic Guidance</span>
+                    <h2 class="section-title" data-i18n="rec_title">Intelligent Farming Recommendations</h2>
+                    <p class="section-desc" data-i18n="rec_desc">Actionable recommendations generated live from gaps between farmer readings and target Maharashtra sugarcane standards.</p>
+                </div>
+
+                <div class="rec-cards-grid" id="recCardsContainer">
+                    <!-- Fertilizer Recommendation Card -->
+                    <div class="rec-card">
+                        <div class="rec-header">
+                            <span class="rec-icon fert-icon">➕</span>
+                            <h3 class="rec-title" data-i18n="rec_fert_title">Fertilizer Management</h3>
+                        </div>
+                        <p class="rec-text" id="recFertilizerText">
+                            Apply balanced NPK dosage. Nitrogen is currently 150 kg/ha (target: 120-180 kg/ha). Phosphorus is 60 kg/ha (target: 50-80 kg/ha). Maintain split application of Urea during grand growth stage.
+                        </p>
+                    </div>
+
+                    <!-- Irrigation Scheduling Card -->
+                    <div class="rec-card">
+                        <div class="rec-header">
+                            <span class="rec-icon irrig-icon">💧</span>
+                            <h3 class="rec-title" data-i18n="rec_irrig_title">Irrigation Scheduling</h3>
+                        </div>
+                        <p class="rec-text" id="recIrrigationText">
+                            Loam soil maintains steady moisture retention. Maintain 10-12 day irrigation intervals during peak growth and avoid waterlogging.
+                        </p>
+                    </div>
+
+                    <!-- Crop Management Card -->
+                    <div class="rec-card">
+                        <div class="rec-header">
+                            <span class="rec-icon crop-icon">🌾</span>
+                            <h3 class="rec-title" data-i18n="rec_crop_title">Crop Management</h3>
+                        </div>
+                        <p class="rec-text" id="recCropText">
+                            At 5 months crop age (grand growth stage), sugarcane undergoes maximum internode elongation. Ensure adequate weed control and trash mulching.
+                        </p>
+                    </div>
+
+                    <!-- Soil Improvement Card -->
+                    <div class="rec-card">
+                        <div class="rec-header">
+                            <span class="rec-icon soil-icon">🌱</span>
+                            <h3 class="rec-title" data-i18n="rec_soil_title">Soil Improvement</h3>
+                        </div>
+                        <p class="rec-text" id="recSoilText">
+                            Soil pH (6.8) is within the optimal sugarcane range (6.0 – 7.5). Incorporate farmyard manure (FYM) or pressmud compost to improve organic carbon content.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Report Download Trigger Container -->
+                <div class="report-action-box">
+                    <button class="btn btn-primary btn-lg" id="btnDownloadReport">
+                        📄 Download Farm Report (PDF / Print)
+                    </button>
+                    <span class="report-disclaimer">
+                        Note: Readings are processed for this session only and are not saved permanently.
+                    </span>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <span class="logo-icon">🌱</span>
+                    <span class="logo-text">Future<span class="logo-highlight">Verse</span></span>
+                </a>
+                <p class="footer-tagline" data-i18n="footer_tagline">A Machine Learning-Based Framework for Sugarcane Growth Prediction and Intelligent Farming Recommendations.</p>
+            </div>
+            
+            <div class="footer-copy">
+                <p>&copy; 2026 FutureVerse Framework – WIT Solapur Group A18. Built for Maharashtra Sugarcane Farmers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Scroll-To-Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Scroll to top" title="Go to top">
+        ↑
+    </button>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+model_name,val_mae,val_rmse,val_r2,test_mae,test_rmse,test_r2
+Decision Tree Regressor,7.063,8.996,0.6821,6.409,8.13,0.7662
+Random Forest Regressor,5.054,6.358,0.8407,4.389,5.581,0.8898
+Gradient Boosting Regressor,4.821,6.017,0.8572,4.149,5.195,0.9045
+XGBoost Regressor,4.977,6.216,0.8479,4.438,5.549,0.8911

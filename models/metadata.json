@@ -1,0 +1,22 @@
+{
+  "project": "FutureVerse Sugarcane Growth & Yield ML Framework",
+  "region": "Maharashtra, India",
+  "selected_model": "Gradient Boosting Regressor",
+  "categorical_features": [
+    "district",
+    "soil_type",
+    "irrigation_adequacy"
+  ],
+  "numerical_features": [
+    "soil_ph",
+    "nitrogen",
+    "phosphorus",
+    "potassium",
+    "temperature",
+    "humidity",
+    "rainfall",
+    "crop_age_months"
+  ],
+  "target": "yield_t_ha",
+  "growth_target_status": "Conditional / Experimental (Yield target prioritized)"
+}

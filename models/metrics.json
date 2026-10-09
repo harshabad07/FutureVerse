@@ -1,0 +1,45 @@
+{
+  "selected_best_model": "Gradient Boosting Regressor",
+  "dataset_size": 1332,
+  "train_samples": 1065,
+  "test_samples": 267,
+  "target_name": "yield_t_ha",
+  "models_performance": [
+    {
+      "model_name": "Decision Tree Regressor",
+      "val_mae": 7.063,
+      "val_rmse": 8.996,
+      "val_r2": 0.6821,
+      "test_mae": 6.409,
+      "test_rmse": 8.13,
+      "test_r2": 0.7662
+    },
+    {
+      "model_name": "Random Forest Regressor",
+      "val_mae": 5.054,
+      "val_rmse": 6.358,
+      "val_r2": 0.8407,
+      "test_mae": 4.389,
+      "test_rmse": 5.581,
+      "test_r2": 0.8898
+    },
+    {
+      "model_name": "Gradient Boosting Regressor",
+      "val_mae": 4.821,
+      "val_rmse": 6.017,
+      "val_r2": 0.8572,
+      "test_mae": 4.149,
+      "test_rmse": 5.195,
+      "test_r2": 0.9045
+    },
+    {
+      "model_name": "XGBoost Regressor",
+      "val_mae": 4.977,
+      "val_rmse": 6.216,
+      "val_r2": 0.8479,
+      "test_mae": 4.438,
+      "test_rmse": 5.549,
+      "test_r2": 0.8911
+    }
+  ]
+}
